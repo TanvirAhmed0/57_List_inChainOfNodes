@@ -1,9 +1,9 @@
 /**
  Test list features.
  */
-public class UserOfList {
+public class UserOfList_inArray {
     public static void main( String[] args ) {
-        List_inChainOfNodes list = new List_inChainOfNodes();
+        List_inArraySlots list = new List_inArraySlots();
 
         System.out.println( "number of elements: " + list.size() );
         
@@ -25,25 +25,5 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
-                          
-        //Testing set
-        System.out.println( "Before: "
-                          + list );
-        list.set(2, "hey!");
-        System.out.println( "After: "
-                          + list );
-                          
-        list.set(0, "wow!");
-        System.out.println( "After: "
-                          + list );
-                          
-        list.set(3, "nose!");
-        System.out.println( "After: "
-                          + list );
-                          
-        // Testing get
-        System.out.println(list.get(1));
-        System.out.println(list.get(0));
-        System.out.println(list.get(3));
     }
 }

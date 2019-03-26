@@ -9,6 +9,9 @@ public class List_inArraySlots {
     private int filledElements; // the number of elements in this list
 
     private static final int INITIAL_CAPACITY = 10;
+    
+    // *NEW* Head of the list of nodes
+    private Node headReference;
 
     /**
       Construct an empty list with a small initial capacity.
@@ -137,5 +140,14 @@ public class List_inArraySlots {
 
         filledElements--;
         return result;
+     }
+     
+     // *NEW* Creates the head of the list
+      public boolean addAsHead( Object val) {
+        if (size() == 0) { headReference = new Node( val );}
+        else {
+            headReference = new Node( val, headReference);
+        }
+        return true;
      }
 }
