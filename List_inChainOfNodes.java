@@ -64,13 +64,7 @@ public class List_inChainOfNodes{
       @precondition: @index is within the bounds of this list.
      */
      public Node set( int index, Object newValue ) {
-         Node nodeHolder = headReference;
-         for (  int currentIndex = 0;
-                currentIndex < index - 1;
-                currentIndex ++
-                ) {
-                    nodeHolder = nodeHolder.getReferenceToNextNode();
-                }
+         Node nodeHolder = iterateThrough(index - 1);
                 
          Node oldHolder = nodeHolder.getReferenceToNextNode();
          if (index != 0) {
@@ -94,17 +88,56 @@ public class List_inChainOfNodes{
      */
      
     public Object get( int index ) {
+        Node nodeHolder = iterateThrough(index);
+        return nodeHolder.getCargoReference();
+    }
+    
+    /**
+      Insert @value at position @index in this list.
+      Shift the element currently at that position (if any)
+      and any subsequent elements to the right
+      (that is, increase the index associated with each).
+     */
+     public void add( int index, Object value) {
+         if (index != 0) {
+             Node previousNode = iterateThrough(index - 1);
+             Node addedNode = new Node( value, previousNode.getReferenceToNextNode());
+             previousNode.setReferenceToNextNode( addedNode);
+         }
+         else {
+             addAsHead(value);
+         }
+         
+     }
+     
+    /**
+      Remove the element at position @index in this list.
+      Shift any subsequent elements to the left (that is,
+      decrease the index associated with each).
+      @return the value that was removed from the list
+     */
+     public Object remove( int index) {
+         Node currentNode = headReference;
+         if (index != 0) {
+             Node previousNode = iterateThrough(index - 1);
+             currentNode = previousNode.getReferenceToNextNode();
+             previousNode.setReferenceToNextNode(currentNode.getReferenceToNextNode());
+         }
+         else {
+             headReference = headReference.getReferenceToNextNode();
+         }
+         return currentNode.getCargoReference();
+     }
+    
+    private Node iterateThrough( int index) {
         Node nodeHolder = headReference;
-         for (  int currentIndex = 0;
+        for (  int currentIndex = 0;
                 currentIndex < index;
                 currentIndex ++
                 ) {
                     nodeHolder = nodeHolder.getReferenceToNextNode();
                 }
-                
-        return nodeHolder.getCargoReference();
+        return nodeHolder;
     }
-    
-    
      
 }

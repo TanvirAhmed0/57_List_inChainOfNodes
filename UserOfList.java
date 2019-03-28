@@ -42,8 +42,37 @@ public class UserOfList {
                           + list );
                           
         // Testing get
-        System.out.println(list.get(1));
-        System.out.println(list.get(0));
-        System.out.println(list.get(3));
+        System.out.println("expecting t, result : " 
+                            + list.get(1));
+        System.out.println("expecting wow!, result : " 
+                            + list.get(0));
+        System.out.println("expecting nose!, result : " 
+                            + list.get(3));
+                            
+        //Testing add
+        list.add( 1, "the?");
+        System.out.println( "After: "
+                          + list );
+        list.add( 0, "first?");
+        System.out.println( "After: "
+                          + list );
+        list.add( list.size() , "last?");
+        System.out.println( "After: "
+                          + list );
+                          
+        //Testing remove
+        list.remove( 2 );
+        System.out.println( System.lineSeparator()
+                          + "After: "
+                          + list );
+        list.remove( 1 );
+        System.out.println( "After: "
+                          + list );
+        list.remove( 0 );
+        System.out.println( "After: "
+                          + list );
+        list.remove( list.size() - 1);
+        System.out.println( "After: "
+                          + list );
     }
 }
